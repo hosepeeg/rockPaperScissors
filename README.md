@@ -1,0 +1,2 @@
+# rockPaperScissors
+Will be creating a simple game of rock paper scissors. As of now this game will be run completely within the console. However, I will return in future lessons to add a user interface with buttons, animations, and some "flare". The game will be played by the player, as well as a computer. We all should no the rules if not; rock beats scissors, paper beats rock, and scissor beats paper! 
