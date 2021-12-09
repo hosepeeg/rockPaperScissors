@@ -83,16 +83,19 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 
 //The game will run until the first player wins best of 5
 function game(){
-    let flag = true;
-    while(flag === true){
-        let playerSelection = prompt(`Choose either 'Rock", "Paper", "Scissors".`);
-        flag = playRound(playerSelection);
-    }
+
 }
 
 
 
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection = undefined;
 
-game("Rock");
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener(`click`, () => {
+        playerSelection = button.className;
+        playRound(playerSelection);
+    });
+});
