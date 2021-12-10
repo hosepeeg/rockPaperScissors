@@ -19,23 +19,25 @@ function computerPlay(){
 
 //checkScore() checks the score to see if there is a winner. First player to 3 wins. Then resets score for both players
 function checkScore(){
-    const div = document.querySelector('div');
     const p = document.createElement(`p`);
     if(playerScore === 3){
         p.textContent = `You win! The final score was ${playerScore} : ${computerScore}. Congratulations!`;
-        div.appendChild(p);
+        p.classList = '.gameOver';
+        results.appendChild(p);
         playerScore = 0, computerScore = 0;
         return false;
     }
     else if(computerScore === 3){
         p.textContent = `You lose! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
-        div.appendChild(p);
+        p.classList = '.gameOver';
+        results.appendChild(p);
         playerScore = 0, computerScore = 0;
         return false;
     }
     else{
         p.textContent = `The score is now ${playerScore} : ${computerScore}`;
-        div.appendChild(p);
+        p.classList = `.score`;
+        results.appendChild(p);
         return true;
     }
 }
@@ -45,53 +47,60 @@ function checkScore(){
 //playRound() plays a single round of Rock Paper Scissors. This function will take two parameters- the playerSelection and computerSelection- and return a
 //string that declares the winner of the round like so: "You Lose! Paper beats Rock."
 function playRound(playerSelection, computerSelection = computerPlay()){
-    const div = document.querySelector('div');
     const p = document.createElement('p');
 
 
     if(playerSelection === computerSelection){
         p.textContent = `You picked ${playerSelection} against ${computerSelection}! This rounds a tie!`;
-        div.appendChild(p);
+        p.classList = `.score`;
+        results.appendChild(p);
     }
     else if(playerSelection === 'Rock'){
         if(computerSelection === 'Paper'){
             p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            div.appendChild(p);
+            p.classList = `.score`;
+            results.appendChild(p);
             computerScore++;
         }
         else{
             p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            div.appendChild(p);
+            p.classList = `.score`;
+            results.appendChild(p);
             playerScore++;
         }
     }
     else if(playerSelection === 'Paper'){
         if(computerSelection === 'Scissors'){
             p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            div.appendChild(p);
+            p.classList = `.score`;
+            results.appendChild(p);
             computerScore++;
         }
         else{
             p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            div.appendChild(p);
+            p.classList = `.score`;
+            results.appendChild(p);
             playerScore++;
         }
     }
     else if(playerSelection === 'Scissor'){
         if(computerSelection === 'Rock'){
             p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            div.appendChild(p);
+            p.classList = `.score`;
+            results.appendChild(p);
             computerScore++;
         }
         else{
             p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            div.appendChild(p);
+            p.classList = `.score`;
+            results.appendChild(p);
             playerScore++;
         }
     }
     else{
         p.textContent = `Something went wrong.`;
-        div.appendChild(p);
+        p.classList = `.score`;
+        results.appendChild(p);
     }
     return checkScore();
 }
@@ -102,7 +111,7 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 function game(){
 }
 
-
+const results = document.querySelector('.results');
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = undefined;
