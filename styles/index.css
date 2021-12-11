@@ -67,7 +67,7 @@ h4{
     font-size: larger;
 }
 
-.results{
+.scoreBoard{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,4 +99,8 @@ h4{
     background-size: 75%;
     background-repeat: no-repeat;
     margin-right: 10px;
+}
+
+.results{
+    text-align: center;
 }
