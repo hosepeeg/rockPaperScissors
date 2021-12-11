@@ -1,10 +1,102 @@
 body{
     background-color: #bdd4e7;
     background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
-    background-size: cover;   
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
 }
 h1{
     text-align: center;
-    margin-top: 25%;
+    margin-top: 10%;
 }
 
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.Rock{
+    background: url(../imgs/rock.png);
+}
+
+.Paper{
+    background: url(../imgs/paper.png);
+}
+
+.Scissor{
+    background: url(../imgs/scissors.png);
+}
+
+h3, h4{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+
+}
+
+.circleContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#circles{
+    border-radius: 50%;
+    padding: 35px;
+    border: 0.25rem solid black;
+    transition: 0.2s;
+    margin: 0.1rem;
+}
+
+#button{
+    margin: 1rem;
+    padding: 5rem;
+    border: 2px solid black;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    transition: 0.2s;
+    aspect-ratio: 1;
+}
+
+h4{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: larger;
+}
+
+.results{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score{
+    padding: 1rem;
+    border: 0.25rem solid black;
+    font-size: 25px;
+}
+
+.user.score{
+    border-right: 0px;
+}
+
+.comp{
+    background: url(../imgs/comp.png);
+    padding: 2.25rem;
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+
+.you{
+    background: url(../imgs/you.png);
+    padding: 2.25rem;
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
