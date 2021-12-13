@@ -40,6 +40,11 @@ function checkScore(){
     }
 }
 
+//changeColor Changes the color of the circle based on how the round won
+function changeColor(color){
+    const cirlce = document.querySelector(`.circle${round}`);
+    cirlce.style.backgroundColor = color;
+}
 
 
 //playRound() plays a single round of Rock Paper Scissors. This function will take two parameters- the playerSelection and computerSelection- and return a
@@ -52,18 +57,21 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         p.textContent = `You picked ${playerSelection} against ${computerSelection}! This rounds a tie!`;
         p.classList = `.score`;
         results.appendChild(p);
+        changeColor(`yellow`);
     }
     else if(playerSelection === 'Rock'){
         if(computerSelection === 'Paper'){
             p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
             p.classList = `.score`;
             results.appendChild(p);
+            changeColor(`red`);
             computerScore++;
         }
         else{
             p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
             p.classList = `.score`;
             results.appendChild(p);
+            changeColor(`green`);
             playerScore++;
         }
     }
@@ -71,6 +79,7 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         if(computerSelection === 'Scissors'){
             p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
             p.classList = `.score`;
+            changeColor(`red`);
             results.appendChild(p);
             computerScore++;
         }
@@ -78,6 +87,7 @@ function playRound(playerSelection, computerSelection = computerPlay()){
             p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
             p.classList = `.score`;
             results.appendChild(p);
+            changeColor(`green`);
             playerScore++;
         }
     }
@@ -86,12 +96,14 @@ function playRound(playerSelection, computerSelection = computerPlay()){
             p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
             p.classList = `.score`;
             results.appendChild(p);
+            changeColor(`red`);
             computerScore++;
         }
         else{
             p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
             p.classList = `.score`;
             results.appendChild(p);
+            changeColor(`green`);
             playerScore++;
         }
     }
@@ -102,14 +114,15 @@ function playRound(playerSelection, computerSelection = computerPlay()){
     }
 }
 
-const results = document.querySelector('.results');
-const h3 = document.querySelector('.round');
-const pScoreText = document.querySelector(`#pScore`);
-const cScoreText = document.querySelector(`#cScore`);
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = undefined;
 let round = 1;
+const results = document.querySelector('.results');
+const h3 = document.querySelector('.round');
+const pScoreText = document.querySelector(`#pScore`);
+const cScoreText = document.querySelector(`#cScore`);
+
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
