@@ -19,7 +19,6 @@ function computerPlay(){
 
 //checkScore() checks the score to see if there is a winner. First player to 3 wins. Then resets score for both players
 function checkScore(){
-    round++;
     const p = document.createElement(`p`);
     if(round >= 5 && playerScore > computerScore){
         p.textContent = `You win! The final score was ${playerScore} : ${computerScore}. Congratulations!`;
@@ -33,6 +32,8 @@ function checkScore(){
     }
     else{
         p.textContent = `The score is now ${playerScore} : ${computerScore}`;
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
         p.classList = `.score`;
         h3.innerHTML = `Round: ${round}`;
         results.appendChild(p);
@@ -103,6 +104,8 @@ function playRound(playerSelection, computerSelection = computerPlay()){
 
 const results = document.querySelector('.results');
 const h3 = document.querySelector('.round');
+const pScoreText = document.querySelector(`#pScore`);
+const cScoreText = document.querySelector(`#cScore`);
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = undefined;
@@ -112,8 +115,9 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener(`click`, () => {
         playerSelection = button.className;
-        if(round <= 4){
+        if(round <= 5){
             playRound(playerSelection);
+            round++;
         }
         else{
             round++;
