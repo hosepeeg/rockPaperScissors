@@ -36,11 +36,8 @@ function checkScore(){
         results.appendChild(p);
     }
     else{
-        p.textContent = `The score is now ${playerScore} : ${computerScore}`;
         pScoreText.innerHTML = `${playerScore}`;
         cScoreText.innerHTML = `${computerScore}`;
-        p.classList = `.score`;
-        results.appendChild(p);
     }
 }
 
@@ -70,55 +67,34 @@ function playRound(playerSelection, computerSelection = computerPlay()){
     const p = document.createElement('p');
 
     if(playerSelection === computerSelection){
-        p.textContent = `You picked ${playerSelection} against ${computerSelection}! This rounds a tie!`;
-        p.classList = `.score`;
-        results.appendChild(p);
         changeColor(`yellow`);
     }
     else if(playerSelection === 'Rock'){
         if(computerSelection === 'Paper'){
-            p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
             changeColor(`red`);
             computerScore++;
         }
         else{
-            p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
             changeColor(`green`);
             playerScore++;
         }
     }
     else if(playerSelection === 'Paper'){
         if(computerSelection === 'Scissors'){
-            p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            p.classList = `.score`;
-            changeColor(`red`);
             results.appendChild(p);
             computerScore++;
         }
         else{
-            p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
             changeColor(`green`);
             playerScore++;
         }
     }
     else if(playerSelection === 'Scissor'){
         if(computerSelection === 'Rock'){
-            p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
             changeColor(`red`);
             computerScore++;
         }
         else{
-            p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
             changeColor(`green`);
             playerScore++;
         }
