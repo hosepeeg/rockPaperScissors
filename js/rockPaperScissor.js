@@ -46,8 +46,10 @@ function checkScore(){
 
 //changeColor Changes the color of the circle based on how the round won
 function changeColor(color){
-    const cirlce = document.querySelector(`.circle${round}`);
-    cirlce.style.backgroundColor = color;
+    if(round <= 5){
+        const cirlce = document.querySelector(`.circle${round}`);
+        cirlce.style.backgroundColor = color;
+    }
 }
 
 
@@ -132,7 +134,7 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener(`click`, () => {
         playerSelection = button.className;
-        if(round <= 5){
+        if(round != 5){
             round++;
             h3.innerHTML = `Round: ${round}`;
             playRound(playerSelection);
