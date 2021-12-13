@@ -23,16 +23,22 @@ function checkScore(){
     if(round >= 5 && playerScore > computerScore){
         p.textContent = `You win! The final score was ${playerScore} : ${computerScore}. Congratulations!`;
         p.classList = '.gameOver';
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
     }
     else if(round >= 5 && computerScore > playerScore){
         p.textContent = `You lose! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
         p.classList = '.gameOver';
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
     }
     else if(round >= 5 && computerScore === playerScore){
         p.textContent = `The game is a tie! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
         p.classList = `.gameOver`;
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
     }
     else{
@@ -51,8 +57,10 @@ function changeColor(color){
 
 //resetGame() function resets the game to initial state
 function resetGame(){
-    round = 1;
-    h3.innerHTML= `Round ${round}`;
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+    h3.innerHTML= `Round ${1}`;
     pScoreText.innerHTML = `0`;
     cScoreText.innerHTML = `0`;
     for(let i =1; i<=5; i++){
@@ -127,8 +135,7 @@ buttons.forEach((button) => {
             playRound(playerSelection);
         }
         else{
-            round++;
-            console.log(`reset`)
+            resetGame();
         }
     });
 });
