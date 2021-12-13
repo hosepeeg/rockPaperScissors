@@ -44,11 +44,22 @@ function checkScore(){
     }
 }
 
-//changeColor Changes the color of the circle based on how the round won
+//changeColor() Changes the color of the circle based on how the round won
 function changeColor(color){
     if(round <= 5){
         const cirlce = document.querySelector(`.circle${round}`);
         cirlce.style.backgroundColor = color;
+    }
+}
+
+//resetGame() function resets the game to initial state
+function resetGame(){
+    round = 1;
+    h3.innerHTML= `Round ${round}`;
+    pScoreText.innerHTML = `0`;
+    cScoreText.innerHTML = `0`;
+    for(let i =1; i<=5; i++){
+        document.querySelector(`.circle` + i).style.backgroundColor = ``;
     }
 }
 
