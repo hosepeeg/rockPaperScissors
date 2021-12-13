@@ -36,7 +36,6 @@ function checkScore(){
     }
     else{
         p.textContent = `The score is now ${playerScore} : ${computerScore}`;
-        
         p.classList = `.score`;
         results.appendChild(p);
         return true;
