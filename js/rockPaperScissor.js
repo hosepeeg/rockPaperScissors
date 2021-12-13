@@ -19,31 +19,23 @@ function computerPlay(){
 
 //checkScore() checks the score to see if there is a winner. First player to 3 wins. Then resets score for both players
 function checkScore(){
-    const h3 = document.querySelector('.round');
+    round++;
     const p = document.createElement(`p`);
-    if(playerScore === 3){
+    if(round >= 5 && playerScore > computerScore){
         p.textContent = `You win! The final score was ${playerScore} : ${computerScore}. Congratulations!`;
         p.classList = '.gameOver';
         results.appendChild(p);
-        playerScore = 0, computerScore = 0;
-        round = 0;
-        return false;
     }
-    else if(computerScore === 3){
+    else if(round >= 5 && computerScore > playerScore){
         p.textContent = `You lose! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
         p.classList = '.gameOver';
         results.appendChild(p);
-        playerScore = 0, computerScore = 0;
-        round = 0;
-        return false;
     }
     else{
         p.textContent = `The score is now ${playerScore} : ${computerScore}`;
         p.classList = `.score`;
-        round++;
         h3.innerHTML = `Round: ${round}`;
         results.appendChild(p);
-        return true;
     }
 }
 
@@ -53,7 +45,7 @@ function checkScore(){
 //string that declares the winner of the round like so: "You Lose! Paper beats Rock."
 function playRound(playerSelection, computerSelection = computerPlay()){
     const p = document.createElement('p');
-
+    checkScore();
 
     if(playerSelection === computerSelection){
         p.textContent = `You picked ${playerSelection} against ${computerSelection}! This rounds a tie!`;
@@ -107,25 +99,25 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         p.classList = `.score`;
         results.appendChild(p);
     }
-    return checkScore();
-}
-
-
-
-//The game will run until the first player wins best of 5
-function game(){
 }
 
 const results = document.querySelector('.results');
+const h3 = document.querySelector('.round');
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = undefined;
-let round = 0;
+let round = 1;
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener(`click`, () => {
         playerSelection = button.className;
-        playRound(playerSelection);
+        if(round <= 4){
+            playRound(playerSelection);
+        }
+        else{
+            round++;
+            console.log(`reset`)
+        }
     });
 });
