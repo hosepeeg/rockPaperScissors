@@ -20,28 +20,53 @@ function computerPlay(){
 //checkScore() checks the score to see if there is a winner. First player to 3 wins. Then resets score for both players
 function checkScore(){
     const p = document.createElement(`p`);
-    if(playerScore === 3){
+    if(round >= 5 && playerScore > computerScore){
         p.textContent = `You win! The final score was ${playerScore} : ${computerScore}. Congratulations!`;
         p.classList = '.gameOver';
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
-        playerScore = 0, computerScore = 0;
-        return false;
     }
-    else if(computerScore === 3){
+    else if(round >= 5 && computerScore > playerScore){
         p.textContent = `You lose! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
         p.classList = '.gameOver';
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
-        playerScore = 0, computerScore = 0;
-        return false;
+    }
+    else if(round >= 5 && computerScore === playerScore){
+        p.textContent = `The game is a tie! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
+        p.classList = `.gameOver`;
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
+        results.appendChild(p);
     }
     else{
-        p.textContent = `The score is now ${playerScore} : ${computerScore}`;
-        p.classList = `.score`;
-        results.appendChild(p);
-        return true;
+        pScoreText.innerHTML = `${playerScore}`;
+        cScoreText.innerHTML = `${computerScore}`;
     }
 }
 
+//changeColor() Changes the color of the circle based on how the round won
+function changeColor(color){
+    if(round <= 5){
+        const cirlce = document.querySelector(`.circle${round}`);
+        cirlce.style.backgroundColor = color;
+    }
+}
+
+//resetGame() function resets the game to initial state
+function resetGame(){
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+    h3.innerHTML= `Round ${1}`;
+    pScoreText.innerHTML = `0`;
+    cScoreText.innerHTML = `0`;
+    for(let i =1; i<=5; i++){
+        document.querySelector(`.circle` + i).style.backgroundColor = ``;
+    }
+}
 
 
 //playRound() plays a single round of Rock Paper Scissors. This function will take two parameters- the playerSelection and computerSelection- and return a
@@ -49,51 +74,36 @@ function checkScore(){
 function playRound(playerSelection, computerSelection = computerPlay()){
     const p = document.createElement('p');
 
-
     if(playerSelection === computerSelection){
-        p.textContent = `You picked ${playerSelection} against ${computerSelection}! This rounds a tie!`;
-        p.classList = `.score`;
-        results.appendChild(p);
+        changeColor(`yellow`);
     }
     else if(playerSelection === 'Rock'){
         if(computerSelection === 'Paper'){
-            p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
+            changeColor(`red`);
             computerScore++;
         }
         else{
-            p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
+            changeColor(`green`);
             playerScore++;
         }
     }
     else if(playerSelection === 'Paper'){
         if(computerSelection === 'Scissors'){
-            p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
+            changeColor(`red`)
             computerScore++;
         }
         else{
-            p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
+            changeColor(`green`);
             playerScore++;
         }
     }
     else if(playerSelection === 'Scissor'){
         if(computerSelection === 'Rock'){
-            p.textContent = `You lose this round! ${computerSelection} beats ${playerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
+            changeColor(`red`);
             computerScore++;
         }
         else{
-            p.textContent = `You win this round! ${playerSelection} beats ${computerSelection}.`;
-            p.classList = `.score`;
-            results.appendChild(p);
+            changeColor(`green`);
             playerScore++;
         }
     }
@@ -102,24 +112,30 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         p.classList = `.score`;
         results.appendChild(p);
     }
-    return checkScore();
+    checkScore();
 }
 
-
-
-//The game will run until the first player wins best of 5
-function game(){
-}
-
-const results = document.querySelector('.results');
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = undefined;
+let round = 0;
+const results = document.querySelector('.results');
+const h3 = document.querySelector('.round');
+const pScoreText = document.querySelector(`#pScore`);
+const cScoreText = document.querySelector(`#cScore`);
+
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener(`click`, () => {
         playerSelection = button.className;
-        playRound(playerSelection);
+        if(round != 5){
+            round++;
+            h3.innerHTML = `Round: ${round}`;
+            playRound(playerSelection);
+        }
+        else{
+            resetGame();
+        }
     });
 });
