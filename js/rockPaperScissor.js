@@ -57,6 +57,7 @@ function changeColor(color){
 
 //resetGame() function resets the game to initial state
 function resetGame(){
+    const p = document.querySelector(`p`);
     round = 0;
     playerScore = 0;
     computerScore = 0;
@@ -68,6 +69,7 @@ function resetGame(){
     }
     btn.remove();
     body.style.marginTop = '10%';
+    p.remove();
 }
 
 
