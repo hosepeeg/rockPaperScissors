@@ -66,6 +66,8 @@ function resetGame(){
     for(let i =1; i<=5; i++){
         document.querySelector(`.circle` + i).style.backgroundColor = ``;
     }
+    btn.remove();
+    body.style.marginTop = '10%';
 }
 
 
@@ -123,7 +125,9 @@ const results = document.querySelector('.results');
 const h3 = document.querySelector('.round');
 const pScoreText = document.querySelector(`#pScore`);
 const cScoreText = document.querySelector(`#cScore`);
-
+const btn = document.createElement("button");
+const body = document.querySelector(`body`);
+btn.classList = `resetGame`;
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -135,7 +139,13 @@ buttons.forEach((button) => {
             playRound(playerSelection);
         }
         else{
-            resetGame();
+            results.appendChild(btn);
+            body.style.marginTop = `0%`;
+            btn.innerHTML = "Reset Game!"
         }
     });
 });
+
+btn.onclick = function() {
+    resetGame();
+};
