@@ -81,7 +81,7 @@ function playRound(playerSelection, computerSelection = computerPlay()){
     }
     else if(playerSelection === 'Paper'){
         if(computerSelection === 'Scissors'){
-            results.appendChild(p);
+            changeColor(`red`)
             computerScore++;
         }
         else{
