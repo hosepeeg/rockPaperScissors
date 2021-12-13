@@ -30,12 +30,16 @@ function checkScore(){
         p.classList = '.gameOver';
         results.appendChild(p);
     }
+    else if(round >= 5 && computerScore === playerScore){
+        p.textContent = `The game is a tie! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
+        p.classList = `.gameOver`;
+        results.appendChild(p);
+    }
     else{
         p.textContent = `The score is now ${playerScore} : ${computerScore}`;
         pScoreText.innerHTML = `${playerScore}`;
         cScoreText.innerHTML = `${computerScore}`;
         p.classList = `.score`;
-        h3.innerHTML = `Round: ${round}`;
         results.appendChild(p);
     }
 }
@@ -51,7 +55,6 @@ function changeColor(color){
 //string that declares the winner of the round like so: "You Lose! Paper beats Rock."
 function playRound(playerSelection, computerSelection = computerPlay()){
     const p = document.createElement('p');
-    checkScore();
 
     if(playerSelection === computerSelection){
         p.textContent = `You picked ${playerSelection} against ${computerSelection}! This rounds a tie!`;
@@ -112,12 +115,13 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         p.classList = `.score`;
         results.appendChild(p);
     }
+    checkScore();
 }
 
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection = undefined;
-let round = 1;
+let round = 0;
 const results = document.querySelector('.results');
 const h3 = document.querySelector('.round');
 const pScoreText = document.querySelector(`#pScore`);
@@ -129,8 +133,9 @@ buttons.forEach((button) => {
     button.addEventListener(`click`, () => {
         playerSelection = button.className;
         if(round <= 5){
-            playRound(playerSelection);
             round++;
+            h3.innerHTML = `Round: ${round}`;
+            playRound(playerSelection);
         }
         else{
             round++;
