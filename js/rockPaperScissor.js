@@ -15,6 +15,12 @@ function computerPlay(){
     return choices[Math.floor(Math.random() * 3)];
 }
 
+//this function creates the button as well as corrects margin
+function createButton(){
+    results.appendChild(btn);
+    body.style.marginTop = `0%`;
+    btn.innerHTML = "Reset Game!"
+}
 
 
 //checkScore() checks the score to see if there is a winner. First player to 3 wins. Then resets score for both players
@@ -26,6 +32,8 @@ function checkScore(){
         pScoreText.innerHTML = `${playerScore}`;
         cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
+        createButton();
+        
     }
     else if(round >= 5 && computerScore > playerScore){
         p.textContent = `You lose! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
@@ -33,6 +41,7 @@ function checkScore(){
         pScoreText.innerHTML = `${playerScore}`;
         cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
+        createButton();
     }
     else if(round >= 5 && computerScore === playerScore){
         p.textContent = `The game is a tie! The final score was ${playerScore} : ${computerScore}. Better luck next time.`;
@@ -40,6 +49,7 @@ function checkScore(){
         pScoreText.innerHTML = `${playerScore}`;
         cScoreText.innerHTML = `${computerScore}`;
         results.appendChild(p);
+        createButton();
     }
     else{
         pScoreText.innerHTML = `${playerScore}`;
@@ -139,11 +149,6 @@ buttons.forEach((button) => {
             round++;
             h3.innerHTML = `Round: ${round}`;
             playRound(playerSelection);
-        }
-        else{
-            results.appendChild(btn);
-            body.style.marginTop = `0%`;
-            btn.innerHTML = "Reset Game!"
         }
     });
 });
