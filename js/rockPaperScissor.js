@@ -82,6 +82,33 @@ function resetGame(){
     p.remove();
 }
 
+//creates image based on the user and computer selection
+function updateImage(playerSelection, computerSelection){
+    const pImage = document.querySelector(`.userSelection`);
+    const cImage = document.querySelector(`.computerSelection`);
+    if(playerSelection === 'Scissor'){
+        pImage.style.backgroundImage = "url('../imgs/scissors.png')"; 
+    }
+    else if(playerSelection === 'Paper'){
+        pImage.style.backgroundImage = "url('../imgs/paper.png')"; 
+    }
+    else{
+        pImage.style.backgroundImage = "url('../imgs/rock.png')"; 
+    }
+
+
+
+
+    if(computerSelection === 'Rock'){
+        cImage.style.backgroundImage = "url('../imgs/rock.png')";
+    }
+    else if(computerSelection === 'Paper'){
+        cImage.style.backgroundImage = "url('../imgs/paper.png')"; 
+    }
+    else{
+        cImage.style.backgroundImage = "url('../imgs/scissors.png')"; 
+    }
+}
 
 //playRound() plays a single round of Rock Paper Scissors. This function will take two parameters- the playerSelection and computerSelection- and return a
 //string that declares the winner of the round like so: "You Lose! Paper beats Rock."
@@ -126,6 +153,8 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         p.classList = `.score`;
         results.appendChild(p);
     }
+    console.log(computerSelection);
+    updateImage(playerSelection, computerSelection);
     checkScore();
 }
 
