@@ -153,7 +153,6 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         p.classList = `.score`;
         results.appendChild(p);
     }
-    console.log(computerSelection);
     updateImage(playerSelection, computerSelection);
     checkScore();
 }
