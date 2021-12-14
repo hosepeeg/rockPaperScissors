@@ -87,13 +87,13 @@ function resetGame(){
 //creates image based on the user and computer selection
 function updateImage(playerSelection, computerSelection){
     if(playerSelection === 'Scissor'){
-        pImage.style.backgroundImage = "url('../imgs/scissors.png')"; 
+        pImage.style.backgroundImage = "url('/rockPaperScissors/imgs/scissors.png')"; 
     }
     else if(playerSelection === 'Paper'){
-        pImage.style.backgroundImage = "url('../imgs/paper.png')"; 
+        pImage.style.backgroundImage = "url('/rockPaperScissors/imgs/paper.png')"; 
     }
     else{
-        pImage.style.backgroundImage = "url('../imgs/rock.png')"; 
+        pImage.style.backgroundImage = "url('/rockPaperScissors/imgs/rock.png')"; 
     }
 
 
