@@ -12,6 +12,7 @@ body{
     align-items: center;
     box-sizing: border-box;
     margin-top: 10%;
+    font-family: 'Margarine', cursive;
 }
 h1{
     text-align: center;
@@ -83,6 +84,7 @@ h4{
     padding: 1rem;
     border: 0.25rem solid black;
     font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .user.score{
