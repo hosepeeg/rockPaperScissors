@@ -80,12 +80,12 @@ function resetGame(){
     btn.remove();
     body.style.marginTop = '10%';
     p.remove();
+    cImage.style.backgroundImage = '';
+    pImage.style.backgroundImage = '';
 }
 
 //creates image based on the user and computer selection
 function updateImage(playerSelection, computerSelection){
-    const pImage = document.querySelector(`.userSelection`);
-    const cImage = document.querySelector(`.computerSelection`);
     if(playerSelection === 'Scissor'){
         pImage.style.backgroundImage = "url('../imgs/scissors.png')"; 
     }
@@ -168,6 +168,8 @@ const pScoreText = document.querySelector(`#pScore`);
 const cScoreText = document.querySelector(`#cScore`);
 const btn = document.createElement("button");
 const body = document.querySelector(`body`);
+const pImage = document.querySelector(`.userSelection`);
+const cImage = document.querySelector(`.computerSelection`);
 btn.classList = `resetGame`;
 
 const buttons = document.querySelectorAll('button');
