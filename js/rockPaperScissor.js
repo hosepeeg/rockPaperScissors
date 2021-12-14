@@ -100,13 +100,13 @@ function updateImage(playerSelection, computerSelection){
 
 
     if(computerSelection === 'Rock'){
-        cImage.style.backgroundImage = "url('../imgs/rock.png')";
+        cImage.style.backgroundImage = "url('/rockPaperScissors/imgs/rock.png')";
     }
     else if(computerSelection === 'Paper'){
-        cImage.style.backgroundImage = "url('../imgs/paper.png')"; 
+        cImage.style.backgroundImage = "url('/rockPaperScissors/imgs/paper.png')"; 
     }
     else{
-        cImage.style.backgroundImage = "url('../imgs/scissors.png')"; 
+        cImage.style.backgroundImage = "url('/rockPaperScissors/imgs/scissors.png')"; 
     }
 }
 
