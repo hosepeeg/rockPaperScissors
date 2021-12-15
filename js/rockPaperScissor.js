@@ -11,7 +11,7 @@
 //computerPlay() creates a array of choices, then uses math.random to create a values between 0-1, multiples it by 3, then rounds it down with math.floor
 //this creates a number between 0,1,2 which will be used as the index number for our array to choose the element.
 function computerPlay(){
-    let choices = ['Rock', 'Paper', 'Scissors'];
+    let choices = ['Rock', 'Paper', 'Scissor'];
     return choices[Math.floor(Math.random() * 3)];
 }
 
@@ -129,7 +129,7 @@ function playRound(playerSelection, computerSelection = computerPlay()){
         }
     }
     else if(playerSelection === 'Paper'){
-        if(computerSelection === 'Scissors'){
+        if(computerSelection === 'Scissor'){
             changeColor(`red`)
             computerScore++;
         }
